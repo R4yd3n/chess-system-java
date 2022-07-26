@@ -2,6 +2,8 @@ package application;
 
 import chess.ChessPiece;
 
+// Essa classe mostra constroi e mostra o tabuleiro na tela
+
 public class UI {
   public static void printBoard(ChessPiece[][] pieces) {
 	  for(int i = 0; i < pieces.length; i++) {
