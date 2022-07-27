@@ -55,6 +55,21 @@ public void placePiece(Piece piece, Position position) {
 	pieces[position.getRow()][position.getColumn()] = piece;
 }
 
+//Remove a peca de uma posicao.
+
+public Piece removePiece (Position position) {
+	if(!positionExists(position)) {
+		throw new BoardException("Essa nao e uma posicao do tabuleiro!");
+	}
+	if(position == null) {
+	  return null;
+	}
+	Piece aux = piece(position);
+	pieces[position.getRow()][position.getColumn()] = null;
+	return aux;
+}
+
+
 //Retorna um valor booleano falando se a posicao existe ou nao
 
  public boolean positionExists(int row, int column) {
@@ -63,8 +78,6 @@ public void placePiece(Piece piece, Position position) {
  public boolean positionExists(Position position) {
 	 return positionExists(position.getRow(), position.getColumn());
  }
-
-
 
 //Recebe uma posicao e retorna um booleano falando se nessa posicao existe uma peca
   public boolean thereIsAPiece(Position position) {
