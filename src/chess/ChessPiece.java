@@ -2,6 +2,7 @@ package chess;
 
 import boardgame.Board;
 import boardgame.Piece;
+import boardgame.Position;
 
 //Se trata das pecas do jogo de xadrez em execucao
 
@@ -14,10 +15,15 @@ public abstract class ChessPiece extends Piece {
 		this.color = color;
 	}
 
+	//Nao tem setColor() porque nao quero que ninguem mude as cores das pecas durante o jogo
+	
 	public Color getColor() {
 		return color;
 	}
 
-	//Nao tem setColor() porque nao quero que ninguem mude as cores das pecas durante o jogo
+	protected boolean isThereOpponentPiece(Position position) {
+	  ChessPiece p = (ChessPiece)getBoard().piece(position);
+	  return p != null && p.getColor() != color;
+	}
 	
 }

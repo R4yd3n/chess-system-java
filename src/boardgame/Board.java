@@ -1,9 +1,5 @@
 package boardgame;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 //Tabuleiro do jogo
 
 public class Board {
