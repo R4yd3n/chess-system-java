@@ -5,7 +5,7 @@ import boardgame.Piece;
 
 //Se trata das pecas do jogo de xadrez em execucao
 
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
   
 	private Color color;
 

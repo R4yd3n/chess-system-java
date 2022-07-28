@@ -48,6 +48,9 @@ public class ChessMatch {
 	  if (!board.thereIsAPiece(position)) {
 		  throw new ChessException("Nao existe peca na posicao de origem");
 	  }
+	  if (!board.piece(position).isThereAnyPossibleMove()) {
+		  throw new ChessException("Nao existe movimento possivel!");
+	  }
   }
   //Metodo que vai receber as coordenadas do xadrez
   private void  placeNewPiece(char column, int row, ChessPiece piece) {
