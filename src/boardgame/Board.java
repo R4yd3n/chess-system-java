@@ -49,6 +49,7 @@ public void placePiece(Piece piece, Position position) {
 		throw new BoardException("Ja existe uma peca na posicao " + position);
 	}
 	pieces[position.getRow()][position.getColumn()] = piece;
+	piece.position = position;
 }
 
 //Remove a peca de uma posicao.
