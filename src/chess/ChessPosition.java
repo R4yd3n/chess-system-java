@@ -29,7 +29,7 @@ public int getRow() {
   
  //Converte uma posicao na matriz para uma posicao de xadrez
  protected static ChessPosition fromPosition(Position position) {
-	 return new ChessPosition( (char)('a' - position.getColumn()),( 8 - position.getRow()));
+	 return new ChessPosition( (char)('a' + position.getColumn()),( 8 - position.getRow()));
  }
  
  //Vai imprimir a posicao de xadrez na ordem (coluna/linha)
