@@ -7,12 +7,24 @@ import chess.pieces.King;
 import chess.pieces.Rook;
 
 public class ChessMatch {
+  private int turn;
+  private Color currentPlayer;
   private Board board;
   
   //Crio um tabuleiro 8x8 e atribui o setup inicial
   public ChessMatch() {
 	this.board = new Board(8,8);
+	turn = 1;
+	currentPlayer = Color.WHITE;
 	initialSetup();
+  }
+  
+  public int getTurn() {
+	  return turn;
+  }
+  
+  public Color getCurrentPlayer() {
+	  return currentPlayer;
   }
   
   //Coloca as pecas no tabuleiro
@@ -41,6 +53,7 @@ public class ChessMatch {
 	   validateSourcePosition(source);
 	   validadeTargetPosition(source,target);
 	   Piece capturedPiece = makeMove(source,target);
+	   nextTurn();
 	   return (ChessPiece)capturedPiece;
    }
    
@@ -56,6 +69,9 @@ public class ChessMatch {
 	  if (!board.thereIsAPiece(position)) {
 		  throw new ChessException("Nao existe peca na posicao de origem");
 	  }
+	  if (currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+		  throw new ChessException("A peca escolhida nao e sua!");
+	  }
 	  if (!board.piece(position).isThereAnyPossibleMove()) {
 		  throw new ChessException("Nao existe movimento possivel!");
 	  }
@@ -67,6 +83,13 @@ public class ChessMatch {
 		 throw new ChessException("Esse movimento nao pode ser feito pela peca escolhida!");
 	 }
  }
+ 
+ //Troca de turno
+ public void nextTurn() {
+	 turn++;
+	 currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
+ }
+ 
   //Metodo que vai receber as coordenadas do xadrez
   private void  placeNewPiece(char column, int row, ChessPiece piece) {
 	  board.placePiece(piece, new ChessPosition(column,row).toPosition());
