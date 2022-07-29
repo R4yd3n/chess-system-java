@@ -27,6 +27,13 @@ public class ChessMatch {
 	  return mat;
   }
   
+  //Mostra as posições disponíveis para se mover.
+   public boolean[][] possibleMoves(ChessPosition sourcePosition){
+	   Position position = sourcePosition.toPosition();
+	   validateSourcePosition(position);
+	   return board.piece(position).possibleMoves();
+	   }
+  
   //Metodo responsavel por realizar o movimento de xadrez
    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 	   Position source = sourcePosition.toPosition();
@@ -57,7 +64,7 @@ public class ChessMatch {
   //Verifica se a posição final da peça é valida.
  private void validadeTargetPosition(Position source, Position target) {
 	 if(!board.piece(source).possibleMove(target)) {
-		 throw new ChessException("Nao ha movimentos possiveis para a peca escolhida!");
+		 throw new ChessException("Esse movimento nao pode ser feito pela peca escolhida!");
 	 }
  }
   //Metodo que vai receber as coordenadas do xadrez
